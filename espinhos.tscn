@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0saj1iqgg0ly"]
+
+[ext_resource type="Script" path="res://area_2d.gd" id="1_3be3t"]
+[ext_resource type="Texture2D" uid="uid://ckdwwrmpto5lj" path="res://espinhos.png" id="1_pbhyv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8s4hu"]
+size = Vector2(328, 232)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p11u7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_pbhyv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(1.52588e-05, 0)
+scale = Vector2(1, 1)
+script = ExtResource("1_3be3t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(196, 148)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_8s4hu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+position = Vector2(188.824, 137.984)
+scale = Vector2(0.40794, 0.405963)
+sprite_frames = SubResource("SpriteFrames_p11u7")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
